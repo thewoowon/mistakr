@@ -1,97 +1,90 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# mistakr
 
-# Getting Started
+> 실패도 자산이에요.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+스타트업 실패 사례를 모아서 분석해주는 앱이에요.
+남의 실패에서 배우면, 내 성공 확률이 올라가거든요.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 뭐하는 앱이야?
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+창업할 때 가장 무서운 건 뭘까요?
+**"나만 이런 실수 하는 건가?"** 라는 생각이에요.
 
-```sh
-# Using npm
-npm start
+근데 사실, 대부분의 실패는 패턴이 있어요.
+그걸 미리 알았다면 피할 수 있었을 텐데.
 
-# OR using Yarn
-yarn start
+mistakr는 실제 스타트업 실패 사례를 수집하고,
+**그래프와 타임라인**으로 쉽게 볼 수 있게 정리했어요.
+
+---
+
+## 지금은 MVP에요
+
+### Phase 1 (현재)
+- 실패 사례 큐레이션
+- 타임라인으로 사건 흐름 보기
+- 노드 그래프로 인과관계 파악
+- 북마크 기능
+
+### Phase 2 (예정)
+- **Failure AI 컨설팅**
+- 내 창업 아이디어 입력하면
+- 비슷한 실패 사례 매칭해서
+- "이런 부분 조심하세요" 피드백
+
+---
+
+## 기술 스택
+
+```
+React Native 0.83
+TypeScript
+Zustand (상태관리)
+React Query (서버 상태)
+React Navigation 7
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 시작하기
 
-### Android
+```bash
+# 의존성 설치
+yarn install
 
-```sh
-# Using npm
-npm run android
+# iOS
+cd ios && pod install && cd ..
+yarn ios
 
-# OR using Yarn
+# Android
 yarn android
 ```
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 프로젝트 구조
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```
+src/
+├── components/     # 재사용 컴포넌트
+├── screens/        # 화면들
+│   ├── auth/       # 온보딩, 스플래시
+│   ├── home/       # 홈, 케이스 상세
+│   ├── explore/    # 탐색
+│   ├── saved/      # 저장된 케이스
+│   └── profile/    # 프로필, 설정
+├── navigation/     # 네비게이션 설정
+├── store/          # Zustand 스토어
+├── hooks/          # 커스텀 훅
+├── types/          # 타입 정의
+├── constants/      # 상수 (컬러, 타이포)
+└── utils/          # 유틸 함수
 ```
 
-Then, and every time you update your native dependencies, run:
+---
 
-```sh
-bundle exec pod install
-```
+## 라이선스
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+MIT

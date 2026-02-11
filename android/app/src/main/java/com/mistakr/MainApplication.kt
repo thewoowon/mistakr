@@ -1,4 +1,4 @@
-package com.mistakr
+package com.thewoowon.mistakr
 
 import android.app.Application
 import com.facebook.react.PackageList
