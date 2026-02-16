@@ -12,7 +12,9 @@
       "@constants/*": ["./src/constants/*"],
       "@services/*": ["./src/services/*"],
       "@storage/*": ["./src/storage/*"],
-      "@axios/*": ["./src/axios/*"]
+      "@axios/*": ["./src/axios/*"],
+      "@store/*": ["./src/store/*"],
+      "@types/*": ["./src/types/*"]
     },
     "module": "NodeNext",
     "moduleResolution": "NodeNext",

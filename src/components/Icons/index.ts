@@ -13,3 +13,4 @@ export { default as UserIcon } from './UserIcon';
 export { default as InfoIcon } from './InfoIcon';
 export { default as LeftChevronIcon } from './LeftChevronIcon';
 export { default as TrashIcon } from './TrashIcon';
+export { default as ConsultingIcon } from './ConsultingIcon';

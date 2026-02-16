@@ -4,6 +4,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import Svg, { Path, Circle } from 'react-native-svg';
 import { HomeStack } from './HomeStack';
 import { ProfileStack } from './ProfileStack';
+import { ConsultingStack } from './ConsultingStack';
 import { ExploreScreen } from '../screens/explore';
 import { SavedScreen } from '../screens/saved';
 import { RootTabParamList } from './types';
@@ -13,6 +14,7 @@ import {
   HomeIcon,
   MagnifierIcon,
   ProfileIcon,
+  ConsultingIcon,
 } from '@components/Icons';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -102,6 +104,37 @@ export function TabNavigator() {
               ]}
             >
               검색
+            </Text>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="ConsultingTab"
+        component={ConsultingStack}
+        options={{
+          tabBarIcon: ({
+            focused,
+            color,
+          }: {
+            focused: boolean;
+            color: string;
+          }) => <ConsultingIcon color={focused ? colors.accent : 'white'} />,
+          tabBarLabel: ({
+            focused,
+            color,
+          }: {
+            focused: boolean;
+            color: string;
+          }) => (
+            <Text
+              style={[
+                styles.tabBarItemTextStyle,
+                {
+                  color: focused ? colors.accent : 'white',
+                },
+              ]}
+            >
+              AI 진단
             </Text>
           ),
         }}

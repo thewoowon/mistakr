@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		033F61A1906048B7A276F320 /* PragatiNarrow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C931AD2DD33A4FCA8F60952C /* PragatiNarrow-Regular.ttf */; };
-		0C80B921A6F3F58F76C31292 /* libPods-mistakr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-mistakr.a */; };
 		10FA07AAE17F4102B5EFA6A6 /* PragatiNarrow-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67D501A6CEF84A40A02C4A2A /* PragatiNarrow-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		57F8864A5BF9429ABFBDB1C5 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93F236D38523404EA129A354 /* Pretendard-Bold.otf */; };
@@ -23,6 +22,7 @@
 		CD86A61EC84645E9BFE903E6 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97C0277FC20A40AFB2F8078A /* Pretendard-SemiBold.otf */; };
 		DD15B3322253453591E35F96 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97EB9F944B2B45A8BFE14BF3 /* Pretendard-Regular.otf */; };
 		E85775BA761D4FD297CD66B8 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 26A5C1FBEB664FB1BF15D4C4 /* Pretendard-ExtraLight.otf */; };
+		FE964AE2F15BE359303F3732 /* libPods-mistakr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97CF97F1A957DA315728D81D /* libPods-mistakr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,22 +30,23 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = mistakr/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mistakr/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = mistakr/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		26A5C1FBEB664FB1BF15D4C4 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.otf"; path = "../src/assets/fonts/Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-mistakr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mistakr.debug.xcconfig"; path = "Target Support Files/Pods-mistakr/Pods-mistakr.debug.xcconfig"; sourceTree = "<group>"; };
-		468AB5C630E44BBBAD959732 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.otf"; path = "../src/assets/fonts/Pretendard-Thin.otf"; sourceTree = "<group>"; };
-		4D44C396FCBA480C9D59040E /* Pretendard-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.otf"; path = "../src/assets/fonts/Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-mistakr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mistakr.release.xcconfig"; path = "Target Support Files/Pods-mistakr/Pods-mistakr.release.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-mistakr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mistakr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		67D501A6CEF84A40A02C4A2A /* PragatiNarrow-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PragatiNarrow-Bold.ttf"; path = "../src/assets/fonts/PragatiNarrow-Bold.ttf"; sourceTree = "<group>"; };
+		26A5C1FBEB664FB1BF15D4C4 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.otf"; path = "../src/assets/fonts/Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		468AB5C630E44BBBAD959732 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.otf"; path = "../src/assets/fonts/Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		4D44C396FCBA480C9D59040E /* Pretendard-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.otf"; path = "../src/assets/fonts/Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		67D501A6CEF84A40A02C4A2A /* PragatiNarrow-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PragatiNarrow-Bold.ttf"; path = "../src/assets/fonts/PragatiNarrow-Bold.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mistakr/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = mistakr/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89B10572F20A42A7B5F93326 /* Pretendard-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Black.otf"; path = "../src/assets/fonts/Pretendard-Black.otf"; sourceTree = "<group>"; };
-		91BAB7F4317343209D1E83F9 /* Pretendard-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.otf"; path = "../src/assets/fonts/Pretendard-Light.otf"; sourceTree = "<group>"; };
-		93F236D38523404EA129A354 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.otf"; path = "../src/assets/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		97C0277FC20A40AFB2F8078A /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.otf"; path = "../src/assets/fonts/Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		97EB9F944B2B45A8BFE14BF3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.otf"; path = "../src/assets/fonts/Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		9A265C91DCC5457B828946DC /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.otf"; path = "../src/assets/fonts/Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
-		C931AD2DD33A4FCA8F60952C /* PragatiNarrow-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PragatiNarrow-Regular.ttf"; path = "../src/assets/fonts/PragatiNarrow-Regular.ttf"; sourceTree = "<group>"; };
+		89B10572F20A42A7B5F93326 /* Pretendard-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Black.otf"; path = "../src/assets/fonts/Pretendard-Black.otf"; sourceTree = "<group>"; };
+		91BAB7F4317343209D1E83F9 /* Pretendard-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.otf"; path = "../src/assets/fonts/Pretendard-Light.otf"; sourceTree = "<group>"; };
+		93F236D38523404EA129A354 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.otf"; path = "../src/assets/fonts/Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		97C0277FC20A40AFB2F8078A /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.otf"; path = "../src/assets/fonts/Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		97CF97F1A957DA315728D81D /* libPods-mistakr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mistakr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EB9F944B2B45A8BFE14BF3 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.otf"; path = "../src/assets/fonts/Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		9A265C91DCC5457B828946DC /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.otf"; path = "../src/assets/fonts/Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		C931AD2DD33A4FCA8F60952C /* PragatiNarrow-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "PragatiNarrow-Regular.ttf"; path = "../src/assets/fonts/PragatiNarrow-Regular.ttf"; sourceTree = "<group>"; };
+		C9915FA9A4DBB8E8DCDBD1E7 /* Pods-mistakr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mistakr.release.xcconfig"; path = "Target Support Files/Pods-mistakr/Pods-mistakr.release.xcconfig"; sourceTree = "<group>"; };
+		CCB13D2340135FCFA606501D /* Pods-mistakr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mistakr.debug.xcconfig"; path = "Target Support Files/Pods-mistakr/Pods-mistakr.debug.xcconfig"; sourceTree = "<group>"; };
+		E976A14C2F42CD8C00F86EC7 /* mistakr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = mistakr.entitlements; path = mistakr/mistakr.entitlements; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -54,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-mistakr.a in Frameworks */,
+				FE964AE2F15BE359303F3732 /* libPods-mistakr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +65,7 @@
 		13B07FAE1A68108700A75B9A /* mistakr */ = {
 			isa = PBXGroup;
 			children = (
+				E976A14C2F42CD8C00F86EC7 /* mistakr.entitlements */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -77,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-mistakr.a */,
+				97CF97F1A957DA315728D81D /* libPods-mistakr.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,8 +117,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-mistakr.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-mistakr.release.xcconfig */,
+				CCB13D2340135FCFA606501D /* Pods-mistakr.debug.xcconfig */,
+				C9915FA9A4DBB8E8DCDBD1E7 /* Pods-mistakr.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -137,7 +139,6 @@
 				C931AD2DD33A4FCA8F60952C /* PragatiNarrow-Regular.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,13 +148,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mistakr" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				1CDC8CAD5E9BD94A606366C9 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				440AE5E6ED6C80FD9F315D07 /* [CP] Embed Pods Frameworks */,
+				83E116C81708EB8A52E8C8E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,24 +237,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"\\\"$WITH_ENVIRONMENT\\\" \\\"$REACT_NATIVE_XCODE\\\"\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mistakr/Pods-mistakr-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-mistakr/Pods-mistakr-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mistakr/Pods-mistakr-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		1CDC8CAD5E9BD94A606366C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,7 +259,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		440AE5E6ED6C80FD9F315D07 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mistakr/Pods-mistakr-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mistakr/Pods-mistakr-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mistakr/Pods-mistakr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83E116C81708EB8A52E8C8E4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -308,14 +309,16 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-mistakr.debug.xcconfig */;
+			baseConfigurationReference = CCB13D2340135FCFA606501D /* Pods-mistakr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mistakr/mistakr.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CXVHHLS2K4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = mistakr/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "미스테이커";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -337,13 +340,15 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-mistakr.release.xcconfig */;
+			baseConfigurationReference = C9915FA9A4DBB8E8DCDBD1E7 /* Pods-mistakr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = mistakr/mistakr.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CXVHHLS2K4;
 				INFOPLIST_FILE = mistakr/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "미스테이커";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

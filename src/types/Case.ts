@@ -58,4 +58,10 @@ export const failureTypeMap: {
   'business-model': '비즈니스 모델',
   competition: '경쟁',
   culture: '조직 문화',
+  'unit-economics': '단위 경제성',
+  'founder-conflict': '창업자 갈등',
+  'premature-scaling': '조기 확장',
+  'talent-retention': '인재 유출',
+  'customer-acquisition': '고객 획득 비용',
+  'regulatory-change': '규제 변화',
 };
