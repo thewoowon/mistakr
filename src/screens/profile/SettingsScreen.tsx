@@ -6,12 +6,18 @@ import {
   ScrollView,
   Switch,
   Pressable,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../../hooks/useTheme';
-import { lightHaptic } from '../../utils';
+import { lightHaptic, confirm } from '../../utils';
 import { ChevronRightIcon } from '@components/Icons';
 import Svg, { Path } from 'react-native-svg';
+import customAxios from '@axios/customAxios';
+import { API_PREFIX } from '@env';
+import { useUser } from '@contexts/UserContext';
+import useAuth from '@hooks/useAuth';
+import { logout } from '@screens/auth/auth';
 
 function BellIcon({ color }: { color: string }) {
   return (
@@ -49,6 +55,27 @@ function ShieldIcon({ color }: { color: string }) {
     <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
       <Path
         d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
+
+function UserXIcon({ color }: { color: string }) {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM20 8l-4 4M16 8l4 4"
         stroke={color}
         strokeWidth={2}
         strokeLinecap="round"
@@ -134,6 +161,8 @@ function MenuItem({
 export function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const colors = useTheme();
+  const { setIsAuthenticated } = useAuth();
+  const { user } = useUser();
 
   const [pushEnabled, setPushEnabled] = useState(true);
   const [marketingEnabled, setMarketingEnabled] = useState(false);
@@ -146,6 +175,11 @@ export function SettingsScreen() {
   const handleMarketingToggle = (value: boolean) => {
     lightHaptic();
     setMarketingEnabled(value);
+  };
+
+  const deleteAccount = async () => {
+    const response = await customAxios.delete(`${API_PREFIX}/users/me`);
+    return response.data;
   };
 
   return (
@@ -238,7 +272,29 @@ export function SettingsScreen() {
             showChevron={false}
             colors={colors}
             danger
-            onPress={() => lightHaptic()}
+            onPress={async () => {
+              const result = await confirm('로그아웃', '정말 로그아웃 하시겠습니까?');
+              if (result) {
+                await logout();
+                setIsAuthenticated(false);
+              }
+            }}
+          />
+          <MenuItem
+            icon={<UserXIcon color="#FF6B6B" />}
+            title="회원탈퇴"
+            showChevron={false}
+            colors={colors}
+            danger
+            onPress={async () => {
+              const result = await confirm('회원탈퇴', '정말 회원탈퇴 하시겠습니까?');
+              if (result) {
+                await deleteAccount();
+                Alert.alert('회원탈퇴가 완료되었습니다.');
+                await logout();
+                setIsAuthenticated(false);
+              }
+            }}
           />
         </View>
       </View>
