@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,15 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useTheme} from '@hooks/index';
-import {typography} from '@constants/index';
-import {ConsultingIcon} from '@components/Icons';
-import {useConsultingStore} from '../../store/consultingStore';
-import type {ConsultingStackParamList} from '../../navigation/types';
-import {SessionCard} from '@components/consulting/SessionCard';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTheme } from '@hooks/index';
+import { typography } from '@constants/index';
+import { ConsultingIcon } from '@components/Icons';
+import { useConsultingStore } from '../../store/consultingStore';
+import type { ConsultingStackParamList } from '../../navigation/types';
+import { SessionCard } from '@components/consulting/SessionCard';
 
 type NavigationProp = NativeStackNavigationProp<ConsultingStackParamList>;
 
@@ -34,44 +34,39 @@ export function ConsultingHomeScreen() {
 
   const handleSessionPress = useCallback(
     (sessionId: string) => {
-      navigation.navigate('ConsultingResult', {sessionId});
+      navigation.navigate('ConsultingResult', { sessionId });
     },
     [navigation],
   );
 
   return (
     <SafeAreaView
-      style={[styles.container, {backgroundColor: colors.background}]}>
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <ScrollView
         contentContainerStyle={styles.content}
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <Text style={[styles.title, {color: colors.text.primary}]}>
-            AI 실패 컨설턴트
-          </Text>
-          <Text style={[styles.subtitle, {color: colors.text.secondary}]}>
-            당신의 아이디어, 실패에서 배우세요
-          </Text>
-        </View>
-
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.heroSection}>
           <View
             style={[
               styles.heroCard,
-              {backgroundColor: colors.surface, borderColor: colors.stroke},
-            ]}>
+              { backgroundColor: colors.surface, borderColor: colors.stroke },
+            ]}
+          >
             <ConsultingIcon width={48} height={48} color={colors.accent} />
-            <Text style={[styles.heroTitle, {color: colors.text.primary}]}>
+            <Text style={[styles.heroTitle, { color: colors.text.primary }]}>
               스타트업 리스크 진단
             </Text>
-            <Text style={[styles.heroDesc, {color: colors.text.secondary}]}>
+            <Text style={[styles.heroDesc, { color: colors.text.secondary }]}>
               아이디어를 입력하면 유사한 실패 사례를 분석해서{'\n'}
-              맞춤형 리스크 리포트를 제공합니다
+              맞춤형 리스크 리포트를 제공해요!
             </Text>
             <TouchableOpacity
-              style={[styles.ctaButton, {backgroundColor: colors.accent}]}
+              style={[styles.ctaButton, { backgroundColor: colors.accent }]}
               onPress={handleStartNew}
-              activeOpacity={0.8}>
+              activeOpacity={0.8}
+            >
               <Text style={styles.ctaText}>새로운 분석 시작</Text>
             </TouchableOpacity>
           </View>
@@ -81,11 +76,12 @@ export function ConsultingHomeScreen() {
           <View style={styles.recentSection}>
             <View style={styles.sectionHeader}>
               <Text
-                style={[styles.sectionTitle, {color: colors.text.primary}]}>
+                style={[styles.sectionTitle, { color: colors.text.primary }]}
+              >
                 최근 컨설팅
               </Text>
               <TouchableOpacity onPress={handleViewHistory}>
-                <Text style={[styles.viewAll, {color: colors.accent}]}>
+                <Text style={[styles.viewAll, { color: colors.accent }]}>
                   전체 보기
                 </Text>
               </TouchableOpacity>
@@ -96,7 +92,7 @@ export function ConsultingHomeScreen() {
               showsHorizontalScrollIndicator={false}
               keyExtractor={item => item.id}
               contentContainerStyle={styles.sessionList}
-              renderItem={({item}) => (
+              renderItem={({ item }) => (
                 <SessionCard
                   session={item}
                   onPress={() => handleSessionPress(item.id)}
@@ -107,7 +103,7 @@ export function ConsultingHomeScreen() {
         )}
 
         <View style={styles.infoSection}>
-          <Text style={[styles.sectionTitle, {color: colors.text.primary}]}>
+          <Text style={[styles.sectionTitle, { color: colors.text.primary }]}>
             이런 걸 알려드려요
           </Text>
           <View style={styles.infoCards}>
@@ -141,14 +137,16 @@ export function ConsultingHomeScreen() {
                     backgroundColor: colors.surface,
                     borderColor: colors.stroke,
                   },
-                ]}>
-                <Text style={styles.infoEmoji}>{item.emoji}</Text>
+                ]}
+              >
                 <Text
-                  style={[styles.infoTitle, {color: colors.text.primary}]}>
+                  style={[styles.infoTitle, { color: colors.text.primary }]}
+                >
                   {item.title}
                 </Text>
                 <Text
-                  style={[styles.infoDesc, {color: colors.text.secondary}]}>
+                  style={[styles.infoDesc, { color: colors.text.secondary }]}
+                >
                   {item.desc}
                 </Text>
               </View>
@@ -244,16 +242,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 16,
   },
-  infoEmoji: {
-    fontSize: 24,
-    marginBottom: 8,
-  },
   infoTitle: {
-    ...typography.h3,
+    fontSize: 14,
+    fontFamily: 'Pretendard-SemiBold',
+    lineHeight: 20,
     marginBottom: 4,
   },
   infoDesc: {
-    ...typography.caption,
-    lineHeight: 18,
+    fontSize: 12,
+    fontFamily: 'Pretendard-Light',
+    lineHeight: 16,
   },
 });

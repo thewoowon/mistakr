@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation, useRoute} from '@react-navigation/native';
@@ -84,6 +85,7 @@ export function IdeaInputScreen() {
 
   const [step, setStep] = useState(existingDraft?.step || 1);
   const [form, setForm] = useState<IdeaFormDraft>(existingDraft || initialDraft);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateForm = useCallback(
     (updates: Partial<IdeaFormDraft>) => {
@@ -113,10 +115,16 @@ export function IdeaInputScreen() {
   }, [step, updateForm]);
 
   const handleSubmit = useCallback(async () => {
-    const ideaId = await createIdea(form);
-    const sessionId = await startSession(ideaId, form.companyName);
-    navigation.replace('ConsultingResult', {sessionId});
-  }, [form, navigation, createIdea, startSession]);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    try {
+      const ideaId = await createIdea(form);
+      const sessionId = await startSession(ideaId, form.companyName);
+      navigation.replace('ConsultingResult', {sessionId});
+    } catch (error) {
+      setIsSubmitting(false);
+    }
+  }, [form, navigation, createIdea, startSession, isSubmitting]);
 
   const isStepValid = useCallback(() => {
     switch (step) {
@@ -407,14 +415,14 @@ export function IdeaInputScreen() {
                 }
                 colors={colors}
               />
-              {form.currentMrr && (
+              {form.currentMrr != null && form.currentMrr > 0 && (
                 <SummaryRow
                   label="월 매출"
                   value={`${form.currentMrr.toLocaleString()}원`}
                   colors={colors}
                 />
               )}
-              {form.monthlyBurnRate && (
+              {form.monthlyBurnRate != null && form.monthlyBurnRate > 0 && (
                 <SummaryRow
                   label="월간 번율"
                   value={`${form.monthlyBurnRate.toLocaleString()}원`}
@@ -467,17 +475,21 @@ export function IdeaInputScreen() {
             style={[
               styles.nextButton,
               {
-                backgroundColor: isStepValid()
+                backgroundColor: isStepValid() && !isSubmitting
                   ? colors.accent
                   : colors.text.disabled,
               },
               step === 1 && styles.fullWidth,
             ]}
             onPress={step === TOTAL_STEPS ? handleSubmit : handleNext}
-            disabled={!isStepValid()}>
-            <Text style={styles.nextButtonText}>
-              {step === TOTAL_STEPS ? '분석 시작' : '다음'}
-            </Text>
+            disabled={!isStepValid() || isSubmitting}>
+            {isSubmitting ? (
+              <ActivityIndicator size="small" color="#161616" />
+            ) : (
+              <Text style={styles.nextButtonText}>
+                {step === TOTAL_STEPS ? '분석 시작' : '다음'}
+              </Text>
+            )}
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
