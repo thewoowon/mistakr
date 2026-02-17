@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleProp, Pressable, ViewStyle} from 'react-native';
+import { StyleProp, Pressable, ViewStyle } from 'react-native';
 import * as Icons from '../../Icons';
 
 export type IconName = keyof typeof Icons;
@@ -37,7 +37,6 @@ const Icon = ({
       width={width ?? size}
       height={height ?? size}
       color={color}
-      text={text}
     />
   );
 

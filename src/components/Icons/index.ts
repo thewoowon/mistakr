@@ -14,3 +14,8 @@ export { default as InfoIcon } from './InfoIcon';
 export { default as LeftChevronIcon } from './LeftChevronIcon';
 export { default as TrashIcon } from './TrashIcon';
 export { default as ConsultingIcon } from './ConsultingIcon';
+export { default as AppleIcon } from './SocialIcons/AppleIcon';
+export { default as KakaoIcon } from './SocialIcons/KakaoIcon';
+export { default as NaverIcon } from './SocialIcons/NaverIcon';
+export { default as GoogleIcon } from './SocialIcons/GoogleIcon';
+export { default as LogoIcon } from './LogoIcon';
