@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -10,44 +10,54 @@ import {
   Platform,
   ActivityIndicator,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import type {NativeStackNavigationProp, NativeStackScreenProps} from '@react-navigation/native-stack';
-import {useTheme} from '@hooks/index';
-import {typography} from '@constants/index';
-import {industryMap} from '../../types/Case';
-import {useIdeaStore} from '../../store/ideaStore';
-import {useConsultingStore} from '../../store/consultingStore';
-import {StepIndicator} from '@components/consulting/StepIndicator';
-import {ChipSelector} from '@components/form/ChipSelector';
-import {ToggleRow} from '@components/form/ToggleRow';
-import {StepperInput} from '@components/form/StepperInput';
-import type {ConsultingStackParamList} from '../../navigation/types';
-import type {IdeaFormDraft, RevenueModel, StartupStage} from '../../types/Consulting';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import type {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
+import { useTheme } from '@hooks/index';
+import { typography } from '@constants/index';
+import { industryMap } from '../../types/Case';
+import { useIdeaStore } from '../../store/ideaStore';
+import { useConsultingStore } from '../../store/consultingStore';
+import { StepIndicator } from '@components/consulting/StepIndicator';
+import { ChipSelector } from '@components/form/ChipSelector';
+import { ToggleRow } from '@components/form/ToggleRow';
+import { StepperInput } from '@components/form/StepperInput';
+import type { ConsultingStackParamList } from '../../navigation/types';
+import type {
+  IdeaFormDraft,
+  RevenueModel,
+  StartupStage,
+} from '../../types/Consulting';
 
 type NavigationProp = NativeStackNavigationProp<
   ConsultingStackParamList,
   'IdeaInput'
 >;
-type ScreenProps = NativeStackScreenProps<ConsultingStackParamList, 'IdeaInput'>;
+type ScreenProps = NativeStackScreenProps<
+  ConsultingStackParamList,
+  'IdeaInput'
+>;
 type ScreenRouteProp = ScreenProps['route'];
 
 const TOTAL_STEPS = 4;
 
 const revenueModelOptions = [
-  {key: 'subscription' as RevenueModel, label: '구독'},
-  {key: 'transaction' as RevenueModel, label: '거래 수수료'},
-  {key: 'advertising' as RevenueModel, label: '광고'},
-  {key: 'marketplace' as RevenueModel, label: '마켓플레이스'},
-  {key: 'other' as RevenueModel, label: '기타'},
+  { key: 'subscription' as RevenueModel, label: '구독' },
+  { key: 'transaction' as RevenueModel, label: '거래 수수료' },
+  { key: 'advertising' as RevenueModel, label: '광고' },
+  { key: 'marketplace' as RevenueModel, label: '마켓플레이스' },
+  { key: 'other' as RevenueModel, label: '기타' },
 ];
 
 const stageOptions = [
-  {key: 'idea' as StartupStage, label: '아이디어'},
-  {key: 'prototype' as StartupStage, label: '프로토타입'},
-  {key: 'mvp' as StartupStage, label: 'MVP'},
-  {key: 'growth' as StartupStage, label: '성장'},
-  {key: 'scaling' as StartupStage, label: '스케일링'},
+  { key: 'idea' as StartupStage, label: '아이디어' },
+  { key: 'prototype' as StartupStage, label: '프로토타입' },
+  { key: 'mvp' as StartupStage, label: 'MVP' },
+  { key: 'growth' as StartupStage, label: '성장' },
+  { key: 'scaling' as StartupStage, label: '스케일링' },
 ];
 
 const industryOptions = Object.entries(industryMap).map(([key, label]) => ({
@@ -84,13 +94,15 @@ export function IdeaInputScreen() {
   const startSession = useConsultingStore(state => state.startSession);
 
   const [step, setStep] = useState(existingDraft?.step || 1);
-  const [form, setForm] = useState<IdeaFormDraft>(existingDraft || initialDraft);
+  const [form, setForm] = useState<IdeaFormDraft>(
+    existingDraft || initialDraft,
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const updateForm = useCallback(
     (updates: Partial<IdeaFormDraft>) => {
       setForm(prev => {
-        const next = {...prev, ...updates};
+        const next = { ...prev, ...updates };
         saveDraft(next);
         return next;
       });
@@ -102,7 +114,7 @@ export function IdeaInputScreen() {
     if (step < TOTAL_STEPS) {
       const nextStep = step + 1;
       setStep(nextStep);
-      updateForm({step: nextStep});
+      updateForm({ step: nextStep });
     }
   }, [step, updateForm]);
 
@@ -110,7 +122,7 @@ export function IdeaInputScreen() {
     if (step > 1) {
       const prevStep = step - 1;
       setStep(prevStep);
-      updateForm({step: prevStep});
+      updateForm({ step: prevStep });
     }
   }, [step, updateForm]);
 
@@ -120,8 +132,9 @@ export function IdeaInputScreen() {
     try {
       const ideaId = await createIdea(form);
       const sessionId = await startSession(ideaId, form.companyName);
-      navigation.replace('ConsultingResult', {sessionId});
+      navigation.replace('ConsultingResult', { sessionId });
     } catch (error) {
+      console.log('error: ', error);
       setIsSubmitting(false);
     }
   }, [form, navigation, createIdea, startSession, isSubmitting]);
@@ -137,9 +150,7 @@ export function IdeaInputScreen() {
       case 2:
         return form.founderCount >= 1 && form.teamSize >= 1;
       case 3:
-        return (
-          form.revenueModel !== '' && form.currentStage !== ''
-        );
+        return form.revenueModel !== '' && form.currentStage !== '';
       case 4:
         return true;
       default:
@@ -152,14 +163,14 @@ export function IdeaInputScreen() {
       case 1:
         return (
           <View style={styles.stepContent}>
-            <Text style={[styles.stepTitle, {color: colors.text.primary}]}>
+            <Text style={[styles.stepTitle, { color: colors.text.primary }]}>
               기본 정보
             </Text>
-            <Text style={[styles.stepDesc, {color: colors.text.secondary}]}>
+            <Text style={[styles.stepDesc, { color: colors.text.secondary }]}>
               분석할 스타트업의 기본 정보를 입력해주세요
             </Text>
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               프로젝트 이름
             </Text>
             <TextInput
@@ -172,21 +183,21 @@ export function IdeaInputScreen() {
                 },
               ]}
               value={form.companyName}
-              onChangeText={v => updateForm({companyName: v})}
+              onChangeText={v => updateForm({ companyName: v })}
               placeholder="예: 프레시밀"
               placeholderTextColor={colors.text.disabled}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               업종
             </Text>
             <ChipSelector
               options={industryOptions}
               selected={form.industry}
-              onSelect={v => updateForm({industry: v})}
+              onSelect={v => updateForm({ industry: v })}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               한 줄 설명
             </Text>
             <TextInput
@@ -199,12 +210,12 @@ export function IdeaInputScreen() {
                 },
               ]}
               value={form.shortDescription}
-              onChangeText={v => updateForm({shortDescription: v})}
+              onChangeText={v => updateForm({ shortDescription: v })}
               placeholder="어떤 서비스인지 한 줄로 설명해주세요"
               placeholderTextColor={colors.text.disabled}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               상세 설명
             </Text>
             <TextInput
@@ -218,7 +229,7 @@ export function IdeaInputScreen() {
                 },
               ]}
               value={form.detailedDescription}
-              onChangeText={v => updateForm({detailedDescription: v})}
+              onChangeText={v => updateForm({ detailedDescription: v })}
               placeholder="타겟 고객, 해결하려는 문제, 핵심 기능 등을 자유롭게 작성해주세요"
               placeholderTextColor={colors.text.disabled}
               multiline
@@ -231,29 +242,29 @@ export function IdeaInputScreen() {
       case 2:
         return (
           <View style={styles.stepContent}>
-            <Text style={[styles.stepTitle, {color: colors.text.primary}]}>
+            <Text style={[styles.stepTitle, { color: colors.text.primary }]}>
               팀 정보
             </Text>
-            <Text style={[styles.stepDesc, {color: colors.text.secondary}]}>
+            <Text style={[styles.stepDesc, { color: colors.text.secondary }]}>
               팀 구성에 대해 알려주세요
             </Text>
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               창업자 수
             </Text>
             <StepperInput
               value={form.founderCount}
-              onChange={v => updateForm({founderCount: v})}
+              onChange={v => updateForm({ founderCount: v })}
               min={1}
               max={10}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               전체 팀 규모
             </Text>
             <StepperInput
               value={form.teamSize}
-              onChange={v => updateForm({teamSize: v})}
+              onChange={v => updateForm({ teamSize: v })}
               min={1}
               max={500}
             />
@@ -261,13 +272,13 @@ export function IdeaInputScreen() {
             <ToggleRow
               label="업계 경험이 있나요?"
               value={form.hasIndustryExperience}
-              onToggle={v => updateForm({hasIndustryExperience: v})}
+              onToggle={v => updateForm({ hasIndustryExperience: v })}
             />
 
             <ToggleRow
               label="기술 공동창업자가 있나요?"
               value={form.hasTechnicalCofounder}
-              onToggle={v => updateForm({hasTechnicalCofounder: v})}
+              onToggle={v => updateForm({ hasTechnicalCofounder: v })}
             />
           </View>
         );
@@ -275,32 +286,32 @@ export function IdeaInputScreen() {
       case 3:
         return (
           <View style={styles.stepContent}>
-            <Text style={[styles.stepTitle, {color: colors.text.primary}]}>
+            <Text style={[styles.stepTitle, { color: colors.text.primary }]}>
               비즈니스 정보
             </Text>
-            <Text style={[styles.stepDesc, {color: colors.text.secondary}]}>
+            <Text style={[styles.stepDesc, { color: colors.text.secondary }]}>
               비즈니스 모델과 현재 상황을 알려주세요
             </Text>
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               수익 모델
             </Text>
             <ChipSelector
               options={revenueModelOptions}
               selected={form.revenueModel}
-              onSelect={v => updateForm({revenueModel: v as RevenueModel})}
+              onSelect={v => updateForm({ revenueModel: v as RevenueModel })}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               현재 단계
             </Text>
             <ChipSelector
               options={stageOptions}
               selected={form.currentStage}
-              onSelect={v => updateForm({currentStage: v as StartupStage})}
+              onSelect={v => updateForm({ currentStage: v as StartupStage })}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               타겟 시장
             </Text>
             <TextInput
@@ -313,22 +324,22 @@ export function IdeaInputScreen() {
                 },
               ]}
               value={form.targetMarket}
-              onChangeText={v => updateForm({targetMarket: v})}
+              onChangeText={v => updateForm({ targetMarket: v })}
               placeholder="예: 25-40세 맞벌이 가정"
               placeholderTextColor={colors.text.disabled}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               창업 후 경과 개월 수
             </Text>
             <StepperInput
               value={form.monthsSinceFounding}
-              onChange={v => updateForm({monthsSinceFounding: v})}
+              onChange={v => updateForm({ monthsSinceFounding: v })}
               min={0}
               max={120}
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               월 반복 매출 (원, 선택)
             </Text>
             <TextInput
@@ -342,14 +353,14 @@ export function IdeaInputScreen() {
               ]}
               value={form.currentMrr?.toString() || ''}
               onChangeText={v =>
-                updateForm({currentMrr: v ? Number(v) : null})
+                updateForm({ currentMrr: v ? Number(v) : null })
               }
               placeholder="예: 2500000"
               placeholderTextColor={colors.text.disabled}
               keyboardType="numeric"
             />
 
-            <Text style={[styles.label, {color: colors.text.secondary}]}>
+            <Text style={[styles.label, { color: colors.text.secondary }]}>
               월간 번율 (원, 선택)
             </Text>
             <TextInput
@@ -363,7 +374,7 @@ export function IdeaInputScreen() {
               ]}
               value={form.monthlyBurnRate?.toString() || ''}
               onChangeText={v =>
-                updateForm({monthlyBurnRate: v ? Number(v) : null})
+                updateForm({ monthlyBurnRate: v ? Number(v) : null })
               }
               placeholder="예: 35000000"
               placeholderTextColor={colors.text.disabled}
@@ -375,25 +386,34 @@ export function IdeaInputScreen() {
       case 4:
         return (
           <View style={styles.stepContent}>
-            <Text style={[styles.stepTitle, {color: colors.text.primary}]}>
+            <Text style={[styles.stepTitle, { color: colors.text.primary }]}>
               확인
             </Text>
-            <Text style={[styles.stepDesc, {color: colors.text.secondary}]}>
+            <Text style={[styles.stepDesc, { color: colors.text.secondary }]}>
               입력한 정보를 확인하고 분석을 시작하세요
             </Text>
 
             <View
               style={[
                 styles.summaryCard,
-                {backgroundColor: colors.surface, borderColor: colors.stroke},
-              ]}>
-              <SummaryRow label="프로젝트" value={form.companyName} colors={colors} />
+                { backgroundColor: colors.surface, borderColor: colors.stroke },
+              ]}
+            >
+              <SummaryRow
+                label="프로젝트"
+                value={form.companyName}
+                colors={colors}
+              />
               <SummaryRow
                 label="업종"
                 value={industryMap[form.industry] || form.industry}
                 colors={colors}
               />
-              <SummaryRow label="설명" value={form.shortDescription} colors={colors} />
+              <SummaryRow
+                label="설명"
+                value={form.shortDescription}
+                colors={colors}
+              />
               <SummaryRow
                 label="팀 규모"
                 value={`창업자 ${form.founderCount}명 / 전체 ${form.teamSize}명`}
@@ -441,32 +461,31 @@ export function IdeaInputScreen() {
   return (
     <SafeAreaView
       edges={['bottom']}
-      style={[styles.container, {backgroundColor: colors.background}]}>
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <KeyboardAvoidingView
         style={styles.flex}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
         <StepIndicator currentStep={step} totalSteps={TOTAL_STEPS} />
 
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled">
+          keyboardShouldPersistTaps="handled"
+        >
           {renderStep()}
         </ScrollView>
 
-        <View
-          style={[
-            styles.footer,
-            {borderTopColor: colors.stroke},
-          ]}>
+        <View style={[styles.footer, { borderTopColor: colors.stroke }]}>
           {step > 1 && (
             <TouchableOpacity
-              style={[
-                styles.backButton,
-                {borderColor: colors.stroke},
-              ]}
-              onPress={handleBack}>
-              <Text style={[styles.backButtonText, {color: colors.text.primary}]}>
+              style={[styles.backButton, { borderColor: colors.stroke }]}
+              onPress={handleBack}
+            >
+              <Text
+                style={[styles.backButtonText, { color: colors.text.primary }]}
+              >
                 이전
               </Text>
             </TouchableOpacity>
@@ -475,14 +494,16 @@ export function IdeaInputScreen() {
             style={[
               styles.nextButton,
               {
-                backgroundColor: isStepValid() && !isSubmitting
-                  ? colors.accent
-                  : colors.text.disabled,
+                backgroundColor:
+                  isStepValid() && !isSubmitting
+                    ? colors.accent
+                    : colors.text.disabled,
               },
               step === 1 && styles.fullWidth,
             ]}
             onPress={step === TOTAL_STEPS ? handleSubmit : handleNext}
-            disabled={!isStepValid() || isSubmitting}>
+            disabled={!isStepValid() || isSubmitting}
+          >
             {isSubmitting ? (
               <ActivityIndicator size="small" color="#161616" />
             ) : (
@@ -508,12 +529,13 @@ function SummaryRow({
 }) {
   return (
     <View style={styles.summaryRow}>
-      <Text style={[styles.summaryLabel, {color: colors.text.secondary}]}>
+      <Text style={[styles.summaryLabel, { color: colors.text.secondary }]}>
         {label}
       </Text>
       <Text
-        style={[styles.summaryValue, {color: colors.text.primary}]}
-        numberOfLines={2}>
+        style={[styles.summaryValue, { color: colors.text.primary }]}
+        numberOfLines={2}
+      >
         {value}
       </Text>
     </View>
