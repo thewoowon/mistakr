@@ -28,7 +28,7 @@ export function HomeStack() {
       <Stack.Screen
         name="CaseDetail"
         component={CaseDetailScreen}
-        options={({ route }) => ({
+        options={({ route }: { route: any }) => ({
           title: route.params.caseId,
         })}
       />

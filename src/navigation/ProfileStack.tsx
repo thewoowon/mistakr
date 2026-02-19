@@ -1,6 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProfileScreen, SettingsScreen, SupportScreen, VersionScreen } from '../screens/profile';
+import {
+  ProfileScreen,
+  SettingsScreen,
+  SupportScreen,
+  VersionScreen,
+} from '../screens/profile';
 import { ProfileStackParamList } from './types';
 import { colors } from '../constants';
 
@@ -29,17 +34,38 @@ export function ProfileStack() {
       <Stack.Screen
         name="Settings"
         component={SettingsScreen}
-        options={{ title: '환경설정' }}
+        options={{
+          title: '환경설정',
+          headerTitleStyle: {
+            fontFamily: 'Pretendard-SemiBold',
+            color: 'white',
+          },
+          headerBackTitle: '프로필',
+        }}
       />
       <Stack.Screen
         name="Support"
         component={SupportScreen}
-        options={{ title: '고객지원' }}
+        options={{
+          title: '고객지원',
+          headerTitleStyle: {
+            fontFamily: 'Pretendard-SemiBold',
+            color: 'white',
+          },
+          headerBackTitle: '프로필',
+        }}
       />
       <Stack.Screen
         name="Version"
         component={VersionScreen}
-        options={{ title: '버전 정보' }}
+        options={{
+          title: '버전 정보',
+          headerTitleStyle: {
+            fontFamily: 'Pretendard-SemiBold',
+            color: 'white',
+          },
+          headerBackTitle: '프로필',
+        }}
       />
     </Stack.Navigator>
   );
