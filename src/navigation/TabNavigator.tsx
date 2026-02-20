@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, StyleSheet, Text } from 'react-native';
-import Svg, { Path, Circle } from 'react-native-svg';
+import { StyleSheet, Text } from 'react-native';
 import { HomeStack } from './HomeStack';
 import { ProfileStack } from './ProfileStack';
 import { ConsultingStack } from './ConsultingStack';
@@ -16,8 +15,36 @@ import {
   ProfileIcon,
   ConsultingIcon,
 } from '@components/Icons';
+import { useAuth } from '../hooks';
+import GuestSignInScreen from '../screens/auth/GuestSignInScreen';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
+
+const ConsultingGate = () => {
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) {
+    return (
+      <GuestSignInScreen
+        title="AI 진단은 로그인이 필요해요"
+        description={'내 실패 경험을 AI로 분석하고\n성장 인사이트를 받아보세요'}
+      />
+    );
+  }
+  return <ConsultingStack />;
+};
+
+const ProfileGate = () => {
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) {
+    return (
+      <GuestSignInScreen
+        title="로그인하고 더 많은 기능을 사용해보세요"
+        description={'북마크 동기화, AI 진단 기록 등\n다양한 기능을 이용할 수 있어요'}
+      />
+    );
+  }
+  return <ProfileStack />;
+};
 
 export function TabNavigator() {
   return (
@@ -110,7 +137,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="ConsultingTab"
-        component={ConsultingStack}
+        component={ConsultingGate}
         options={{
           tabBarIcon: ({
             focused,
@@ -172,7 +199,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="ProfileTab"
-        component={ProfileStack}
+        component={ProfileGate}
         options={{
           tabBarIcon: ({
             focused,

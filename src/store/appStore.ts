@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 interface AppState {
   hasSeenOnboarding: boolean;
   setHasSeenOnboarding: (value: boolean) => void;
+  hasAgreedAiDataConsent: boolean;
+  setHasAgreedAiDataConsent: (value: boolean) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -12,6 +14,8 @@ export const useAppStore = create<AppState>()(
     (set) => ({
       hasSeenOnboarding: false,
       setHasSeenOnboarding: (value) => set({ hasSeenOnboarding: value }),
+      hasAgreedAiDataConsent: false,
+      setHasAgreedAiDataConsent: (value) => set({ hasAgreedAiDataConsent: value }),
     }),
     {
       name: 'mistakr-app',

@@ -162,7 +162,7 @@ export function VersionScreen() {
           Mistakr
         </Text>
         <Text style={[styles.appVersion, { color: colors.text.secondary }]}>
-          Version 1.4.2
+          Version 1.3.1
         </Text>
         <View style={styles.latestBadge}>
           <CheckCircleIcon color={colors.accent} />
@@ -214,8 +214,8 @@ export function VersionScreen() {
       {/* Build Info */}
       <View style={styles.buildInfoContainer}>
         <Text style={[styles.buildInfo, { color: colors.text.disabled }]}>
-          Build: 20240211.1{'\n'}
-          Bundle ID: com.mistakr.app{'\n'}
+          Build: 20260220.1{'\n'}
+          Bundle ID: com.thewoowon.mistakr{'\n'}
           {'\n'}
           © 2024 Mistakr. All rights reserved.
         </Text>

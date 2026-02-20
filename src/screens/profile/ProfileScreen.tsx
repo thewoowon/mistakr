@@ -15,10 +15,10 @@ import { typography } from '../../constants';
 import { useTheme } from '../../hooks/useTheme';
 import { useBookmarksStore, useThemeStore } from '../../store';
 import { lightHaptic } from '../../utils';
+import { useUser } from '../../contexts/UserContext';
 import { ProfileStackParamList } from '../../navigation/types';
 import {
   ChevronRightIcon,
-  CrownIcon,
   HelpIcon,
   InfoIcon,
   MoonIcon,
@@ -87,6 +87,7 @@ export function ProfileScreen() {
   const colors = useTheme();
   const { bookmarkedCaseIds, clearBookmarks } = useBookmarksStore();
   const { mode, setMode, isDark } = useThemeStore();
+  const { user } = useUser();
 
   const handleDarkModeToggle = (value: boolean) => {
     lightHaptic();
@@ -142,15 +143,15 @@ export function ProfileScreen() {
           <UserIcon color={colors.white} width={64} height={64} />
         </View>
         <Text style={[styles.userName, { color: colors.text.primary }]}>
-          홍길동
+          {user?.name}
         </Text>
         <Text style={[styles.userPlan, { color: colors.text.secondary }]}>
-          gildong@gmail.com
+          {user?.email}
         </Text>
       </View>
 
-      {/* Premium Banner */}
-      <Pressable
+      {/* Premium Banner - temporarily hidden */}
+      {/* <Pressable
         style={[
           styles.premiumBanner,
           {
@@ -170,7 +171,7 @@ export function ProfileScreen() {
           </View>
         </View>
         <ChevronRightIcon color={'#1A1A1A'} width={20} height={20} />
-      </Pressable>
+      </Pressable> */}
 
       {/* Stats */}
       <View

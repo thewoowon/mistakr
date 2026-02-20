@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
   FlatList,
+  Alert,
+  Linking,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -16,6 +18,7 @@ import { ConsultingIcon } from '@components/Icons';
 import { useConsultingStore } from '../../store/consultingStore';
 import type { ConsultingStackParamList } from '../../navigation/types';
 import { SessionCard } from '@components/consulting/SessionCard';
+import { useAppStore } from '../../store';
 
 type NavigationProp = NativeStackNavigationProp<ConsultingStackParamList>;
 
@@ -23,6 +26,29 @@ export function ConsultingHomeScreen() {
   const colors = useTheme();
   const navigation = useNavigation<NavigationProp>();
   const sessions = useConsultingStore(state => state.sessions);
+  const { hasAgreedAiDataConsent, setHasAgreedAiDataConsent } = useAppStore();
+
+  useEffect(() => {
+    if (!hasAgreedAiDataConsent) {
+      Alert.alert(
+        'AI 데이터 전송 안내',
+        '미스테이커는 AI 진단 기능을 위해 입력하신 내용을 Anthropic(Claude AI)에 전송합니다.\n\n• 전송 데이터: 입력한 아이디어 및 실패 경험 텍스트\n• 수신자: Anthropic, Inc.\n• 목적: AI 기반 리스크 분석 및 인사이트 제공\n\n자세한 내용은 개인정보처리방침을 확인해주세요.',
+        [
+          {
+            text: '개인정보처리방침',
+            onPress: () => Linking.openURL('https://mistakr.com/privacy'),
+            style: 'default',
+          },
+          {
+            text: '동의하고 계속하기',
+            onPress: () => setHasAgreedAiDataConsent(true),
+            style: 'default',
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  }, []);
 
   const handleStartNew = useCallback(() => {
     navigation.navigate('IdeaInput', {});

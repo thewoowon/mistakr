@@ -1,7 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {TabNavigator} from './TabNavigator';
-import {AuthStack} from './AuthStack';
 import {SplashScreen, OnboardingScreen} from '../screens/auth';
 import {useAppStore} from '../store';
 import {useAuth} from '../hooks';
@@ -99,7 +98,7 @@ export function AppNavigator() {
           },
         },
       }}>
-      {isAuthenticated ? <TabNavigator /> : <AuthStack />}
+      <TabNavigator />
     </NavigationContainer>
   );
 }
